@@ -41,7 +41,6 @@
                 </ul>
             </div>
         </nav>
-
         <main class="content-area">
             <div class="search-bar col-md-6 mx-auto">
                 <h1 class="text-center">Lyrics Search</h1>
@@ -58,37 +57,14 @@
             <div id="songLyrics">
                 
             </div>
+            <!-- <div class="alert alert-success text-center" role="alert">
+                <h4 class="alert-heading">Well done!</h4>
+                <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                
+                
+              </div> -->
 
-            <!-- <div class="single-lyrics text-center">
-                <button class="btn go-back">&lsaquo;</button>
-                <h2 class="text-success mb-4">Pentatonix - Na Na Na Na</h2>
-                 <pre class="lyric text-white">
-    Wont go whistling like the wind blows,
-    Looking out my window,
-    Just to see the shine
-    Maybe you might call it crazy,
-    How Im acting lately,
-
-    Skipping through the sky
-
-
-
-    I see so clearly,
-
-    Why Im always feeling free.
-
-    So I sleep when my dreams,
-
-    Looking like reality
-
-
-
- 
-                 </pre>
-            </div> -->
-
-
-
+            
         </main>
     </div>
     <!-- Optional JavaScript -->
@@ -99,97 +75,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script>
-        
-       const searchBtn =  document.getElementById("searchBtn");
-       searchBtn.addEventListener("click", function(){
-           const inputValue = document.getElementById("songName").value;
-           if(inputValue == ""){
-               alert("please enter your song name...!")
-           }
-           else{
-            const songResultContainer = document.getElementById('song-result-container');
-            fetch('https://api.lyrics.ovh/suggest/'+inputValue)
-           .then(res => res.json())
-           .then(data => { 
-
-               for (let i = 0; i < 10; i++) {
-                   const searchResult = data.data[i];
-                   console.log(searchResult);
-                   const title = searchResult.title;
-                   const artist = searchResult.artist.name;
-                   console.log(title, artist);
-                   const div = document.createElement('div');
-                   div.innerHTML = `
-                   <div class="search-result col-md-8 mx-auto py-4">
-                    <div class="single-result row align-items-center my-3 p-3">
-                    <div class="col-md-9">
-                        <h3 class="lyrics-name">${searchResult.title}</h3>
-                        <p class="author lead">Album by <span>${searchResult.artist.name}</span></p>
-                    </div>
-                    <div class="col-md-3 text-md-right text-center">
-                        <button onclick = "getLyrics()" class="btn btn-success">Get Lyrics</button>
-                    </div>
-                </div>
-            </div>
-                   `;
-                   songResultContainer.appendChild(div);
-                      
-               }
-           })
-           
-
-           function getLyrics(artist,songTitle){
-               const link = fetch(`https://api.lyrics.ovh/v1/${searchResult.artist.name}/${searchResult.title}`)
-               console.log("Click korce");
-           }
-
-           function getLyrics(artist,songTitle){
-               const link = fetch(`https://api.lyrics.ovh/v1/${searchResult.artist.name}/${searchResult.title}`)
-               .then(res => res.json())
-               .then(data => {
-                   
-                   const lyric = document.getElementById("songLyrics");
-                   lyric.innerHTML = `
-                   <div class="single-lyrics text-center">
-                <button class="btn go-back">&lsaquo;</button>
-                <h2 class="text-success mb-4">${title}</h2>
-                 <pre class="lyric text-white">
-    Wont go whistling like the wind blows,
-    Looking out my window,
-    Just to see the shine
-    Maybe you might call it crazy,
-    How Im acting lately,
-
-    Skipping through the sky
-
-
-
-    I see so clearly,
-
-    Why Im always feeling free.
-
-    So I sleep when my dreams,
-
-    Looking like reality
-
-
-
- 
-                 </pre>
-            </div> -->
-
-                   `;
-
-               })
-               
-           }
-
-           }
-
-          
-       })
-    </script>
+    <script src="script.js"></script>
 
     <!-- Custom Script Here -->
 
